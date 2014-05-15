@@ -58,22 +58,8 @@ Use it to make something cool, have fun, and share what you've learned with othe
  */
 
 * {
-	-webkit-box-sizing: border-box;
 	-moz-box-sizing:    border-box;
 	box-sizing:         border-box;
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-nav,
-section,
-summary {
-	display: block;
 }
 
 audio,
@@ -338,14 +324,6 @@ svg:not(:root) {
 	overflow: hidden;
 }
 
-figure {
-	margin: 0;
-}
-
-form {
-	margin: 0;
-}
-
 fieldset {
 	border: 1px solid #c0c0c0;
 	margin: 0 2px;
@@ -374,7 +352,7 @@ input {
 }
 
 button,
-html input[type="button"],
+input[type="button"],
 input[type="reset"],
 input[type="submit"] {
 	-webkit-appearance: button;

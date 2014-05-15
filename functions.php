@@ -50,14 +50,8 @@ if ( ! isset( $content_width ) )
  */
 function twentythirteen_setup() {
 	/*
-	 * Makes Twenty Thirteen available for translation.
-	 *
-	 * Translations can be added to the /languages/ directory.
-	 * If you're building a theme based on Twenty Thirteen, use a find and
-	 * replace to change 'twentythirteen' to the name of your theme in all
-	 * template files.
+	 * Translations support has been removed.
 	 */
-	load_theme_textdomain( 'twentythirteen', get_template_directory() . '/languages' );
 
 	/*
 	 * This theme styles the visual editor to resemble the theme style,
@@ -83,7 +77,7 @@ function twentythirteen_setup() {
 	) );
 
 	// This theme uses wp_nav_menu() in one location.
-	register_nav_menu( 'primary', __( 'Navigation Menu', 'twentythirteen' ) );
+	register_nav_menu( 'primary', 'Navigation Menu' );
 
 	/*
 	 * This theme uses a custom image size for featured images, displayed on
@@ -114,13 +108,13 @@ function twentythirteen_fonts_url() {
 	 * supported by Source Sans Pro, translate this to 'off'. Do not translate
 	 * into your own language.
 	 */
-	$source_sans_pro = _x( 'on', 'Source Sans Pro font: on or off', 'twentythirteen' );
+	$source_sans_pro = 'on';
 
 	/* Translators: If there are characters in your language that are not
 	 * supported by Bitter, translate this to 'off'. Do not translate into your
 	 * own language.
 	 */
-	$bitter = _x( 'on', 'Bitter font: on or off', 'twentythirteen' );
+	$bitter = 'on';
 
 	if ( 'off' !== $source_sans_pro || 'off' !== $bitter ) {
 		$font_families = array();
@@ -206,7 +200,7 @@ function twentythirteen_wp_title( $title, $sep ) {
 
 	// Add a page number if necessary.
 	if ( $paged >= 2 || $page >= 2 )
-		$title = "$title $sep " . sprintf( __( 'Page %s', 'twentythirteen' ), max( $paged, $page ) );
+		$title = "$title $sep " . sprintf( 'Page %s', max( $paged, $page ) );
 
 	return $title;
 }
@@ -221,9 +215,9 @@ add_filter( 'wp_title', 'twentythirteen_wp_title', 10, 2 );
  */
 function twentythirteen_widgets_init() {
 	register_sidebar( array(
-		'name'          => __( 'Main Widget Area', 'twentythirteen' ),
+		'name'          => 'Main Widget Area',
 		'id'            => 'sidebar-1',
-		'description'   => __( 'Appears in the footer section of the site.', 'twentythirteen' ),
+		'description'   => 'Appears in the footer section of the site.',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h3 class="widget-title">',
@@ -231,9 +225,9 @@ function twentythirteen_widgets_init() {
 	) );
 
 	register_sidebar( array(
-		'name'          => __( 'Secondary Widget Area', 'twentythirteen' ),
+		'name'          => 'Secondary Widget Area',
 		'id'            => 'sidebar-2',
-		'description'   => __( 'Appears on posts and pages in the sidebar.', 'twentythirteen' ),
+		'description'   => 'Appears on posts and pages in the sidebar.',
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</aside>',
 		'before_title'  => '<h3 class="widget-title">',
@@ -258,15 +252,15 @@ function twentythirteen_paging_nav() {
 		return;
 	?>
 	<nav class="navigation paging-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'twentythirteen' ); ?></h1>
+		<h1 class="screen-reader-text"><?php 'Posts navigation' ?></h1>
 		<div class="nav-links">
 
 			<?php if ( get_next_posts_link() ) : ?>
-			<div class="nav-previous"><?php next_posts_link( __( '<span class="meta-nav">&larr;</span> Older posts', 'twentythirteen' ) ); ?></div>
+			<div class="nav-previous"><?php next_posts_link( '<span class="meta-nav">&larr;</span> Older posts' ); ?></div>
 			<?php endif; ?>
 
 			<?php if ( get_previous_posts_link() ) : ?>
-			<div class="nav-next"><?php previous_posts_link( __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'twentythirteen' ) ); ?></div>
+			<div class="nav-next"><?php previous_posts_link( 'Newer posts <span class="meta-nav">&rarr;</span>' ); ?></div>
 			<?php endif; ?>
 
 		</div><!-- .nav-links -->
@@ -294,11 +288,11 @@ function twentythirteen_post_nav() {
 		return;
 	?>
 	<nav class="navigation post-navigation" role="navigation">
-		<h1 class="screen-reader-text"><?php _e( 'Post navigation', 'twentythirteen' ); ?></h1>
+		<h1 class="screen-reader-text">Post navigation</h1>
 		<div class="nav-links">
 
-			<?php previous_post_link( '%link', _x( '<span class="meta-nav">&larr;</span> %title', 'Previous post link', 'twentythirteen' ) ); ?>
-			<?php next_post_link( '%link', _x( '%title <span class="meta-nav">&rarr;</span>', 'Next post link', 'twentythirteen' ) ); ?>
+			<?php previous_post_link( '%link', '<span class="meta-nav">&larr;</span> %title' ); ?>
+			<?php next_post_link( '%link', '%title <span class="meta-nav">&rarr;</span>' ); ?>
 
 		</div><!-- .nav-links -->
 	</nav><!-- .navigation -->
@@ -318,19 +312,19 @@ if ( ! function_exists( 'twentythirteen_entry_meta' ) ) :
  */
 function twentythirteen_entry_meta() {
 	if ( is_sticky() && is_home() && ! is_paged() )
-		echo '<span class="featured-post">' . __( 'Sticky', 'twentythirteen' ) . '</span>';
+		echo '<span class="featured-post">Sticky</span>';
 
 	if ( ! has_post_format( 'link' ) && 'post' == get_post_type() )
 		twentythirteen_entry_date();
 
 	// Translators: used between list items, there is a space after the comma.
-	$categories_list = get_the_category_list( __( ', ', 'twentythirteen' ) );
+	$categories_list = get_the_category_list( ', ' );
 	if ( $categories_list ) {
 		echo '<span class="categories-links">' . $categories_list . '</span>';
 	}
 
 	// Translators: used between list items, there is a space after the comma.
-	$tag_list = get_the_tag_list( '', __( ', ', 'twentythirteen' ) );
+	$tag_list = get_the_tag_list( '', ', ' );
 	if ( $tag_list ) {
 		echo '<span class="tags-links">' . $tag_list . '</span>';
 	}
@@ -339,7 +333,7 @@ function twentythirteen_entry_meta() {
 	if ( 'post' == get_post_type() ) {
 		printf( '<span class="author vcard"><a class="url fn n" href="%1$s" title="%2$s" rel="author">%3$s</a></span>',
 			esc_url( get_author_posts_url( get_the_author_meta( 'ID' ) ) ),
-			esc_attr( sprintf( __( 'View all posts by %s', 'twentythirteen' ), get_the_author() ) ),
+			esc_attr( sprintf( 'View all posts by %s', get_the_author() ) ),
 			get_the_author()
 		);
 	}
@@ -359,13 +353,13 @@ if ( ! function_exists( 'twentythirteen_entry_date' ) ) :
  */
 function twentythirteen_entry_date( $echo = true ) {
 	if ( has_post_format( array( 'chat', 'status' ) ) )
-		$format_prefix = _x( '%1$s on %2$s', '1: post format name. 2: date', 'twentythirteen' );
+		$format_prefix = '%1$s on %2$s';
 	else
 		$format_prefix = '%2$s';
 
 	$date = sprintf( '<span class="date"><a href="%1$s" title="%2$s" rel="bookmark"><time class="entry-date" datetime="%3$s">%4$s</time></a></span>',
 		esc_url( get_permalink() ),
-		esc_attr( sprintf( __( 'Permalink to %s', 'twentythirteen' ), the_title_attribute( 'echo=0' ) ) ),
+		esc_attr( sprintf( 'Permalink to %s', the_title_attribute( 'echo=0' ) ) ),
 		esc_attr( get_the_date( 'c' ) ),
 		esc_html( sprintf( $format_prefix, get_post_format_string( get_post_format() ), get_the_date() ) )
 	);
