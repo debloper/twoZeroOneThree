@@ -13,10 +13,6 @@
 		</div><!-- #main -->
 		<footer id="colophon" class="site-footer" role="contentinfo">
 			<?php get_sidebar( 'main' ); ?>
-
-			<div class="site-info">
-				<?php do_action( 'twentythirteen_credits' ); ?>
-			</div><!-- .site-info -->
 		</footer><!-- #colophon -->
 	</div><!-- #page -->
 

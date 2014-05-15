@@ -779,22 +779,20 @@ img.wp-smiley,
  */
 
 .site-header {
-	position: relative;
+	width: 100%;
+	text-align: center;
+	background-color: #f7f5e7;
 }
 
-.site-header .home-link {
+.home-link {
 	color: #141412;
 	display: block;
 	margin: 0 auto;
-	max-width: 1080px;
-	min-height: 230px;
 	padding: 0 20px;
-	text-decoration: none;
-	width: 100%;
 }
 
-.site-header .site-title:hover {
-	text-decoration: underline;
+.home-link:hover {
+	text-decoration: none;
 }
 
 .site-title {
@@ -802,12 +800,12 @@ img.wp-smiley,
 	font-weight: bold;
 	line-height: 1;
 	margin: 0;
-	padding: 58px 0 10px;
+	padding: 1em 0 0.1em;
 }
 
 .site-description {
 	font: 300 italic 24px "Source Sans Pro", Helvetica, sans-serif;
-	margin: 0;
+	margin: 0 auto 1em;
 }
 
 
@@ -819,7 +817,7 @@ img.wp-smiley,
 .main-navigation {
 	clear: both;
 	margin: 0 auto;
-	max-width: 1080px;
+	max-width: 800px;
 	min-height: 45px;
 	position: relative;
 }
@@ -842,12 +840,13 @@ div.nav-menu > ul {
 	line-height: 1;
 	padding: 15px 20px;
 	text-decoration: none;
+	border-bottom: 2px solid transparent;
 }
 
 .nav-menu li:hover > a,
 .nav-menu li a:hover {
-	background-color: #220e10;
-	color: #fff;
+	color: #644;
+	border-color: #866;
 }
 
 .nav-menu .sub-menu,
@@ -900,10 +899,8 @@ ul.nav-menu li:hover > ul,
 
 /* Navbar */
 .navbar {
-	background-color: #f7f5e7;
-	margin: 0 auto;
-	max-width: 1600px;
 	width: 100%;
+	border-bottom: 1px solid #9f9090;
 }
 
 .site-header .search-form {
